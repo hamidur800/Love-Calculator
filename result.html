@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Result</title>
+    
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            /* margin-top: 50px; */
+        }
+
+        .main{
+            background-image: linear-gradient(#000, #5dd16e ,#ffff) ;
+            height: 100vh;
+    
+}
+        h1 {
+            color: antiquewhite;
+            padding:20px 0px;
+        }
+
+        h2 {
+            color: rgb(255, 0, 0);
+            padding:10px 0px 30px 0px;
+        }
+
+
+        .btn-t{
+            color: #000;
+            text-decoration: none;
+            background-color: #fff ;
+            padding: 10px 25px;
+            border-radius: 20px;
+            border: 1px solid black;
+            margin-top: 10px;
+        }
+
+        .btn-t:hover {
+            color: #fff;
+            background-color: #000;
+            transition: linear .4s;
+        }
+
+        @media (max-width: 365px) {
+    .main {
+        width: 100vw;
+    }
+
+    .container {
+ 
+        width: 70vw;
+    }
+
+    
+}
+
+    </style>
+</head>
+<body>
+   <div class="main">
+    <div class="">
+        
+    <h1>Love Calculator Result</h1>
+    <h2 id="result"></h2>
+
+    <a href="index.html" class="btn-t">Try Again</a>
+    </div>
+   </div>
+
+    <script>
+        let loveResult = localStorage.getItem("loveResult");
+
+        if (loveResult) {
+            document.getElementById("result").innerHTML = loveResult;
+        } else {
+            document.getElementById("result").innerHTML = "No result found!";
+        }
+    </script>
+
+</body>
+</html>
