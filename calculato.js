@@ -37,7 +37,7 @@ function calculateLove() {
     }
 
     let lovePercentage = Math.floor(Math.random() * 100) + 1;
-    let resultText = `${yourName} and ${partnerName}'s Love Percentage is: ${lovePercentage}%`;
+    let resultText = `${yourName} and ${partnerName}'s Love Percentage is : ${lovePercentage}%`;
 
     // লোকাল স্টোরেজে রেজাল্ট সেভ করবো
     localStorage.setItem("loveResult", resultText);

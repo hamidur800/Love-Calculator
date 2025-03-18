@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Love Result</title>
+    <link rel="shortcut icon" href="img/love-logo.png" type="image/x-icon">
     
     <style>
 
@@ -22,16 +23,103 @@
             background-image: linear-gradient(#000, #5dd16e ,#ffff) ;
             height: 100vh;
     
-}
-        h1 {
-            color: antiquewhite;
-            padding:20px 0px;
-        }
+          }
+         
 
-        h2 {
-            color: rgb(255, 0, 0);
-            padding:10px 0px 30px 0px;
+
+          h1 {
+            color:antiquewhite;
+            padding-top: 20px;
+          }
+
+          #resultText {
+            color: #fff;
+          }
+
+          .r-p{
+            padding: 30px 0px;
+          }
+          
+
+
+
+
+
+          .result-container {
+            font-size: 24px;
         }
+        .love-percentage {
+            color:#e8eae7; 
+            font-weight: bold;
+        }
+       
+
+        @keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes floating-hearts {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(0.5);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateY(-50px) scale(0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1);
+    }
+}
+
+/* Main heart icon */
+.heart-icon {
+    font-size: 50px;
+    color: red;
+    display: inline-block;
+    animation: heartbeat 1s infinite ease-in-out;
+    position: relative; /* Keeps heart inside the container */
+}
+
+/* Floating hearts (background mini hearts) */
+.heart-container {
+    position: relative;  /* Parent div will hold hearts properly */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 20px;
+    color: red;
+    opacity: 0;
+    animation: floating-hearts 2s infinite ease-in-out;
+}
+
+.floating-heart:nth-child(1) {
+    left: 0px;
+    animation-delay: 0.3s;
+}
+.floating-heart:nth-child(2) {
+    left: 50%;
+    animation-delay: 0.5s;
+}
+.floating-heart:nth-child(3) {
+    left: 48%;
+    animation-delay: 0.7s;
+}
 
 
         .btn-t{
@@ -69,22 +157,44 @@
    <div class="main">
     <div class="">
         
-    <h1>Love Calculator Result</h1>
-    <h2 id="result"></h2>
+    
+
+   
+
+    <div class="result-container">
+        <h1>Love Calculator Result</h1>
+
+        <div class="heart-container">
+            <div class="heart-icon">❤️</div>
+            <div class="floating-heart">❤️</div>
+            <div class="floating-heart">❤️</div>
+            <div class="floating-heart">❤️</div>
+        </div>
+
+      <div class="r-p">
+        <span id="resultText"></span>
+        <span class="love-percentage" id="lovePercent"></span>
+      </div>
+
+        
+    </div>
+
 
     <a href="index.html" class="btn-t">Try Again</a>
     </div>
    </div>
 
-    <script>
-        let loveResult = localStorage.getItem("loveResult");
+   <script>
+    // লোকাল স্টোরেজ থেকে ডাটা নেওয়া হবে
+    let loveResult = localStorage.getItem("loveResult");
 
-        if (loveResult) {
-            document.getElementById("result").innerHTML = loveResult;
-        } else {
-            document.getElementById("result").innerHTML = "No result found!";
-        }
-    </script>
+    if (loveResult) {
+        // আলাদা করে % বের করে রঙ পরিবর্তন করবো
+        let parts = loveResult.split(": ");
+        document.getElementById("resultText").innerHTML = parts[0] + ": ";
+        document.getElementById("lovePercent").innerHTML = parts[1];
+    }
+</script>
 
 </body>
 </html>
